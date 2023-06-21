@@ -19,21 +19,10 @@ st.header("Upload PDF Files")
 
 uploaded_files = st.file_uploader("Choose files", type=['pdf'], accept_multiple_files=True)
 
-if uploaded_files is not None:
+if st.button("Convert"):
     extracted_data = convert(uploaded_files)
     df = pd.DataFrame(extracted_data)
     df = df.replace(r'\n',' ', regex=True) 
     if not df.empty:
         st.subheader("Extracted Text")
         st.data_editor(df)
-        
-if st.button("Clear files"):
-   components.html(
-        """
-        <script>
-        function refreshPage() {
-            window.location.reload();
-        }
-        </script>
-        """
-    )
