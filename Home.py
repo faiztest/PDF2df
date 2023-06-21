@@ -15,6 +15,7 @@ def convert(uploaded_files):
 
 def clear_files():
     st.experimental_rerun()
+    uploaded_files = st.file_uploader("Choose files", type=['pdf'], accept_multiple_files=True)
 
 st.title("PDF to Text Converter")
 st.header("Upload PDF Files")
