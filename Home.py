@@ -1,6 +1,7 @@
 import streamlit as st
 import pdfplumber
 import pandas as pd
+import streamlit.components.v1 as components
 
 @st.cache_data(experimental_allow_widgets=True)
 def convert(uploaded_files):
