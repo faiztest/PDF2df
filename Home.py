@@ -13,15 +13,12 @@ def convert(uploaded_files):
         data.append({"File Name": file.name, "Text": text})
     return data
 
-def clear_files():
-    st.experimental_rerun()
-    uploaded_files = st.file_uploader("Choose files", type=['pdf'], accept_multiple_files=True)
-
 st.title("PDF to Text Converter")
 st.header("Upload PDF Files")
 
 uploaded_files = st.file_uploader("Choose files", type=['pdf'], accept_multiple_files=True)
-st.button("Clear uploaded files", on_click=clear_files)
+if st.button("Clear files"):
+    st.experimental_rerun()
 
 if uploaded_files is not None:
     extracted_data = convert(uploaded_files)
