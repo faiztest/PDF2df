@@ -27,4 +27,12 @@ if uploaded_files is not None:
         st.data_editor(df)
         
 if st.button("Clear files"):
-   st.experimental_rerun()
+   components.html(
+        """
+        <script>
+        function refreshPage() {
+            window.location.reload();
+        }
+        </script>
+        """
+    )
