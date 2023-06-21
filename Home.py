@@ -17,8 +17,6 @@ st.title("PDF to Text Converter")
 st.header("Upload PDF Files")
 
 uploaded_files = st.file_uploader("Choose files", type=['pdf'], accept_multiple_files=True)
-if st.button("Clear files"):
-    st.experimental_rerun()
 
 if uploaded_files is not None:
     extracted_data = convert(uploaded_files)
@@ -27,3 +25,6 @@ if uploaded_files is not None:
     if not df.empty:
         st.subheader("Extracted Text")
         st.data_editor(df)
+        
+if st.button("Clear files"):
+   st.experimental_rerun()
