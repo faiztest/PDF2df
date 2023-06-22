@@ -23,7 +23,8 @@ def convert(uploaded_files):
 
 @st.cache_data()
 def remove_before(df):
-    df['Text'] = df['Text'].str.split(rmv).str[-1].str.strip()
+    if rmv:
+         df['Text'] = df['Text'].str.split(rmv).str[-1].str.strip()
     return df
 
 
@@ -49,10 +50,8 @@ word_list = [keyword.strip() for keyword in text_search.split(";")]
 
 if st.button("Convert"):
     df = convert(uploaded_files)
-
-    if rmv is not None:
-         df = remove_before(df)
-    result_df = split(df)
+    rdf = remove_before(df)
+    result_df = split(rdf)
      
     if not result_df.empty:
         st.subheader("Extracted Text")
