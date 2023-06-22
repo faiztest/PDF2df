@@ -9,6 +9,9 @@ st.set_page_config(
      layout="wide"
 )
 
+def clear_data()
+     st.cache_data.clear()
+
 @st.cache_data(experimental_allow_widgets=True)
 def convert(uploaded_files):
     data = []
@@ -48,7 +51,7 @@ rmv = st.text_input("Remove certain text before 'your text'.")
 text_search = st.text_input("Split your PDFs into parts. Separate words (cAsE sEnSiTiVe) by semicolons (;)")
 word_list = [keyword.strip() for keyword in text_search.split(";")]
 
-if st.button("Convert"):
+if st.button("Convert", on_click=clear_data):
     df = convert(uploaded_files)
     rdf = remove_before(df)
     result_df = split(rdf)
