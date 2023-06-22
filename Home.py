@@ -45,4 +45,4 @@ if st.button("Convert"):
     
     if not result_df.empty:
         st.subheader("Extracted Text")
-        st.dataframe(df)
+        st.dataframe(result_df)
