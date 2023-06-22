@@ -5,7 +5,7 @@ import streamlit.components.v1 as components
 
 st.set_page_config(
      page_title="PDFs to dataframe",
-     page_icon="https://digilib.polteknuklir.ac.id/perpus/images/default/logo.png",
+     page_icon="https://github.com/faizhalas/Search4All/blob/main/images/logo.png?raw=true",
      layout="wide"
 )
 
