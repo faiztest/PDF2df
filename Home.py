@@ -50,7 +50,7 @@ word_list = [keyword.strip() for keyword in text_search.split(";")]
 if st.button("Convert"):
     df = convert(uploaded_files)
 
-    if not rmv.empty:
+    if rmv is not None:
          df = remove_before(df)
     result_df = split(df)
      
