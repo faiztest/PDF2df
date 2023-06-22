@@ -9,7 +9,7 @@ st.set_page_config(
      layout="wide"
 )
 
-def clear_data()
+def clear_data():
      st.cache_data.clear()
 
 @st.cache_data(experimental_allow_widgets=True)
