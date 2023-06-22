@@ -18,12 +18,17 @@ def convert(uploaded_files):
             for page in pdf.pages:
                 text += page.extract_text()
         data.append({"File Name": file.name, "Text": text})
-    return data
+    df = pd.DataFrame(data).replace(r'\n',' ', regex=True)
+    return df
+
+@st.cache_data()
+def remove_before(df):
+    df['Text'] = df['Text'].str.split(rmv).str[-1].str.strip()
+    return result_df
+
 
 @st.cache_data()
 def split(extracted_data):
-    df = pd.DataFrame(extracted_data)
-    df = df.replace(r'\n',' ', regex=True) 
     pattern = '|'.join(word_list)
     split_df = df['Text'].str.split(pattern, expand=True)
     result_df = pd.concat([df, split_df], axis=1)
@@ -36,13 +41,19 @@ st.title("PDF to Text Converter")
 st.header("Upload PDF Files")
 
 uploaded_files = st.file_uploader("Choose files", type=['pdf'], accept_multiple_files=True)
+
+rmv = st.text_input("Remove certain text before 'your text'.")
+
 text_search = st.text_input("Split your PDFs into parts. Separate words (cAsE sEnSiTiVe) by semicolons (;)")
 word_list = [keyword.strip() for keyword in text_search.split(";")]
 
 if st.button("Convert"):
-    extracted_data = convert(uploaded_files)
-    result_df = split(extracted_data)
-    
+    df = convert(uploaded_files)
+
+    if not rmv.empty:
+         df = remove_before(df)
+    result_df = split(df)
+     
     if not result_df.empty:
         st.subheader("Extracted Text")
         st.dataframe(result_df)
