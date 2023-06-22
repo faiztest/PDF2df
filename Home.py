@@ -24,7 +24,7 @@ def convert(uploaded_files):
 @st.cache_data()
 def remove_before(df):
     df['Text'] = df['Text'].str.split(rmv).str[-1].str.strip()
-    return result_df
+    return df
 
 
 @st.cache_data()
