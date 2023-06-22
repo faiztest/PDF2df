@@ -26,7 +26,7 @@ def split(extracted_data):
     df = df.replace(r'\n',' ', regex=True) 
     pattern = '|'.join(word_list)
     split_df = df['Text'].str.split(pattern, expand=True)
-    result_df = pd.concat([rd, split_df], axis=1)
+    result_df = pd.concat([df, split_df], axis=1)
     new_columns = ['File Name', 'Text', 'intro'] + word_list
     result_df.columns = new_columns
     return result_df    
