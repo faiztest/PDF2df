@@ -43,6 +43,6 @@ if st.button("Convert"):
     extracted_data = convert(uploaded_files)
     result_df = split(extracted_data)
     
-    if not df.empty:
+    if not result_df.empty:
         st.subheader("Extracted Text")
         st.dataframe(df)
