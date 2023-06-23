@@ -13,7 +13,7 @@ st.set_page_config(
 def clear_data():
      st.cache_data.clear()
 
-@st.cache_data(experimental_allow_widgets=True)
+@st.cache_data(ttl=3600, experimental_allow_widgets=True)
 def convert(uploaded_files):
     data = []
     for file in uploaded_files:
@@ -25,14 +25,14 @@ def convert(uploaded_files):
     df = pd.DataFrame(data).replace(r'\n',' ', regex=True)
     return df
 
-@st.cache_data()
+@st.cache_data(ttl=3600)
 def remove_before(df):
     if rmv:
          df['Text'] = df['Text'].str.split(rmv).str[-1].str.strip()
     return df
 
 
-@st.cache_data()
+@st.cache_data(ttl=3600)
 def split(extracted_data):
     pattern = '|'.join(word_list)
     split_df = df['Text'].str.split(pattern, expand=True)
