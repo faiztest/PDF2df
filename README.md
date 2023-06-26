@@ -7,13 +7,17 @@ Web application for converting PDF to tabular data to aid in [Search4All](https:
 ### How to use it?
 **1.** Put your PDFs here.  We recommend reviewing the style of the submitted document; the technique is heavily dependent on style in common.
 
-**2.** Write the word separator followed by a semicolon (;). Keep in mind that specific words are case-sensitive. 
+**2.** Fill **Remove certain text before 'your text'** if you want to delete words that appear before the word you input 
+
+**3.** Fill **Remove certain text on your PDF** if you want to remove words that appear on the PDF.
+
+**4.** Write the word separator followed by a semicolon (;). Keep in mind that specific words are case-sensitive. 
 - An article, for example, has introduction, method, and result sections (written entirely in capital letters.). Then type the following into the text box:
 ```
 INTRODUCTION; METHOD; RESULT
 ```
 
-**3.** Click the convert button. Copy the content and paste it into your Google Sheet.
+**5.** Click the convert button. Copy the content and paste it into your Google Sheet.
 
 
 
