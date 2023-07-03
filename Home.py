@@ -101,10 +101,10 @@ if have_column:
 
 if st.button("Convert", on_click=clear_data):
     with st.empty():
-    for seconds in range(15):
-        st.write(f"⏳ {seconds} seconds have passed")
-        time.sleep(1)
-    st.write("✔️ 15 second over!") 
+         for seconds in range(15):
+             st.write(f"⏳ {seconds} seconds have passed")
+             time.sleep(1)
+         st.write("✔️ 15 second over!") 
     try:
          if have_column:
               df = convert_col(uploaded_files)
