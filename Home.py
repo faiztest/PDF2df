@@ -3,6 +3,7 @@ import pdfplumber
 import pandas as pd
 import streamlit.components.v1 as components
 import sys
+import time
 
 st.set_page_config(
      page_title="PDFs to dataframe",
@@ -99,6 +100,11 @@ if have_column:
      x1 = st.number_input('Distance of right side of character from left side of page.', min_value=0.0, max_value=1.0, value=0.5)
 
 if st.button("Convert", on_click=clear_data):
+    with st.empty():
+    for seconds in range(15):
+        st.write(f"⏳ {seconds} seconds have passed")
+        time.sleep(1)
+    st.write("✔️ 15 second over!") 
     try:
          if have_column:
               df = convert_col(uploaded_files)
